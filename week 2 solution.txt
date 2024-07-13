@@ -1,0 +1,111 @@
+﻿
+
+-- PART 1
+
+-- PART 1
+use expense_tracker;
+
+
+--  view/retrieving  the entire table
+SELECT *
+from Expenses ;
+
+-- display specific columns
+
+SELECT amount,category
+FROM Expenses ;
+
+-- filtering by date range
+
+SELECT  *
+FROM  Expenses 
+WHERE `date` >= '2023-03-06' and `date` <= '2024-03-01';
+
+-- PART 2
+-- PART 2
+-- find all expenses belonging to a specific category
+SELECT *
+FROM Expenses 
+WHERE category  ='clothing';
+
+-- filtering expenses with a certain amount threshold
+SELECT *
+FROM Expenses 
+WHERE  amount >= 65;
+
+-- filtering expenses given two conditions using and operator
+SELECT  *
+FROM Expenses 
+WHERE  amount  >= 50 and `date` >= '2023-12-30';
+
+-- combining filters using or operator
+SELECT *
+FROM Expenses 
+WHERE amount <= 60 OR expense_id >=5;
+
+-- filtering expenses with  exceptions
+SELECT  *
+FROM Expenses 
+WHERE category != 'clothing';
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- PART 3 
+-- PART 3
+-- sorting expenses based on amount
+SELECT  *
+FROM Expenses 
+ORDER BY amount DESC;
+
+-- sorting the Expenses by date and category
+SELECT *
+FROM Expenses
+ORDER BY `date` DESC, category ASC;
+
+
+
+-- part4
+use expense_tracker:
+
+-- create your schema for the income database
+CREATE table income(
+	income_id INT primary key auto_increment,
+	amount decimal(10,2) not null,
+	date Date not null,
+	source varchar(50)
+);
+
+-- insert data to your table
+INSERT INTO income (amount, date,source)
+values 
+(20,'2024-01-05','salary'),
+(98,'2024-02-12','side hustle'),
+(76,'2024-04-25','grant'),
+(99,'2024-05-10','loan');
+
+
+-- check for all tables in the database
+show tables;
+
+-- view the contents of the income table
+
+SELECT *
+from income;
+
+-- adding a column named category
+ALTER  Table income 
+ADD category varchar(50);
+--  dropping the column named category
+ALTER  table income 
+drop column category;
+
